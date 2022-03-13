@@ -1,0 +1,11 @@
+.profile__author-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__author-container {
+    justify-content: end;
+  }
+}
