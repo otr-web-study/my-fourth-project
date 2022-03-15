@@ -10,4 +10,4 @@ JavaScript
 otr-study
 
 ### Ссылка на проект
-https://otr-web-study.github.io/my-third-project/index.html
+https://otr-web-study.github.io/my-fourth-project/
