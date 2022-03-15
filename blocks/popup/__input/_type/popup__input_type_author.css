@@ -1,0 +1,10 @@
+.popup__input_type_author {
+  margin-top: 54px;
+}
+
+
+@media screen and (max-width: 468px) {
+  .popup__input_type_author  {
+    margin-top: 75px;
+  }
+}
