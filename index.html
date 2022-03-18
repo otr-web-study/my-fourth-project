@@ -16,54 +16,54 @@
         <div class="profile__info">
           <div class="profile__author-container">
             <h1 class="profile__author">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button button" type="button"></button>
+            <button class="profile__edit-button button" type="button" aria-label="Редактировать"></button>
           </div>
           <p class="profile__bio">Исследователь океана</p>       
         </div>
-        <button class="profile__add-button button" type="button"></button>
+        <button class="profile__add-button button" type="button" aria-label="Добавить"></button>
       </section>
       <section class="elements page__elements">
         <ul class="elements__list">
-          <li class="elements__element">
-            <img src="./images/1088404_opt.jpg" class="elements__image" alt="Древнее строение в горах.">
-            <div class="elements__content">
-              <h2 class="elements__title">Карачаевск</h2>
-              <button class="elements__like-button" type="button"></button>
+          <li class="card">
+            <img src="./images/1088404_opt.jpg" class="card__image" alt="Древнее строение в горах.">
+            <div class="card__content">
+              <h2 class="card__title">Карачаевск</h2>
+              <button class="card__like-button" type="button" aria-label="Лайк"></button>
             </div>
           </li>
-          <li class="elements__element">
-            <img src="./images/1404681_opt.png" class="elements__image" alt="Силуэт горы вдали.">
-            <div class="elements__content">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like-button" type="button"></button>
+          <li class="card">
+            <img src="./images/1404681_opt.png" class="card__image" alt="Силуэт горы вдали.">
+            <div class="card__content">
+              <h2 class="card__title">Гора Эльбрус</h2>
+              <button class="card__like-button" type="button" aria-label="Лайк"></button>
             </div>
           </li>
-          <li class="elements__element">
-            <img src="./images/1556355_opt.png" class="elements__image" alt="Скалистая вершина горы.">
-            <div class="elements__content">
-              <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like-button" type="button"></button>
+          <li class="card">
+            <img src="./images/1556355_opt.png" class="card__image" alt="Скалистая вершина горы.">
+            <div class="card__content">
+              <h2 class="card__title">Домбай</h2>
+              <button class="card__like-button" type="button" aria-label="Лайк"></button>
             </div>
           </li>
-          <li class="elements__element">
-            <img src="./images/1404681_opt.png" class="elements__image" alt="Силуэт горы вдали.">
-            <div class="elements__content">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like-button" type="button"></button>
+          <li class="card">
+            <img src="./images/1404681_opt.png" class="card__image" alt="Силуэт горы вдали.">
+            <div class="card__content">
+              <h2 class="card__title">Гора Эльбрус</h2>
+              <button class="card__like-button" type="button" aria-label="Лайк"></button>
             </div>
           </li>
-          <li class="elements__element">
-            <img src="./images/1556355_opt.png" class="elements__image" alt="Скалистая вершина горы.">
-            <div class="elements__content">
-              <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like-button" type="button"></button>
+          <li class="card">
+            <img src="./images/1556355_opt.png" class="card__image" alt="Скалистая вершина горы.">
+            <div class="card__content">
+              <h2 class="card__title">Домбай</h2>
+              <button class="card__like-button" type="button" aria-label="Лайк"></button>
             </div>
           </li>
-          <li class="elements__element">
-            <img src="./images/1088404_opt.jpg" class="elements__image" alt="Древнее строение в горах.">
-            <div class="elements__content">
-              <h2 class="elements__title">Карачаево-Черкессия</h2>
-              <button class="elements__like-button" type="button"></button>
+          <li class="card">
+            <img src="./images/1088404_opt.jpg" class="card__image" alt="Древнее строение в горах.">
+            <div class="card__content">
+              <h2 class="card__title">Карачаево-Черкессия</h2>
+              <button class="card__like-button" type="button" aria-label="Лайк"></button>
             </div>
           </li>
         </ul>
@@ -74,11 +74,11 @@
     </footer>
     <div class="popup">
       <section class="popup__container">
-        <button class="popup__close-button button" type="button"></button>
-        <form class="popup__form">
+        <button class="popup__close-button button" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form" name="profileForm">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input popup__input_type_author" id="profileAuthor">
-          <input type="text" class="popup__input popup__input_type_bio" id="profileBio">
+          <input type="text" class="popup__input popup__input_type_author" id="profileAuthor" name="profileAuthor">
+          <input type="text" class="popup__input popup__input_type_bio" id="profileBio" name="profileBio">
           <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
       </section>
