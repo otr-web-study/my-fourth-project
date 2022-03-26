@@ -24,65 +24,61 @@
       </section>
       <section class="elements page__elements">
         <ul class="elements__list">
-          <li class="card">
-            <img src="./images/1088404_opt.jpg" class="card__image" alt="Древнее строение в горах.">
-            <div class="card__content">
-              <h2 class="card__title">Карачаевск</h2>
-              <button class="card__like-button" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/1404681_opt.png" class="card__image" alt="Силуэт горы вдали.">
-            <div class="card__content">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__like-button" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/1556355_opt.png" class="card__image" alt="Скалистая вершина горы.">
-            <div class="card__content">
-              <h2 class="card__title">Домбай</h2>
-              <button class="card__like-button" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/1404681_opt.png" class="card__image" alt="Силуэт горы вдали.">
-            <div class="card__content">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__like-button" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/1556355_opt.png" class="card__image" alt="Скалистая вершина горы.">
-            <div class="card__content">
-              <h2 class="card__title">Домбай</h2>
-              <button class="card__like-button" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/1088404_opt.jpg" class="card__image" alt="Древнее строение в горах.">
-            <div class="card__content">
-              <h2 class="card__title">Карачаево-Черкессия</h2>
-              <button class="card__like-button" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
     <footer class="footer page__footer">
       <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
-      <section class="popup__container">
+    <div class="popup popup-edit popup-edit_type_profile">
+      <section class="popup-edit__container">
         <button class="popup__close-button button" type="button" aria-label="Закрыть"></button>
-        <form class="popup__form" name="profileForm">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input popup__input_type_author" id="profileAuthor" name="profileAuthor">
-          <input type="text" class="popup__input popup__input_type_bio" id="profileBio" name="profileBio">
-          <button class="popup__button-save" type="submit">Сохранить</button>
+        <form class="popup-edit__form" name="profileForm" id="profileForm">
+          <h2 class="popup-edit__title">Редактировать профиль</h2>
+          <input type="text" class="popup-edit__input popup-edit__input_type_name" id="Name" name="Name">
+          <input type="text" class="popup-edit__input popup-edit__input_type_option" id="Option" name="Option">
+          <button class="popup-edit__button-save" type="submit">Сохранить</button>
         </form>
       </section>
     </div>
+    <div class="popup popup-edit popup-edit_type_place">
+      <section class="popup-edit__container">
+        <button class="popup__close-button button" type="button" aria-label="Закрыть"></button>
+        <form class="popup-edit__form" name="placeForm" id="placeForm">
+          <h2 class="popup-edit__title">Новое место</h2>
+          <input 
+            type="text" 
+            class="popup-edit__input popup-edit__input_type_name" 
+            id="Name" 
+            name="Name" 
+            placeholder="Название">
+          <input 
+            type="text" 
+            class="popup-edit__input popup-edit__input_type_option" 
+            id="Option" 
+            name="Option" 
+            placeholder="Ссылка на картинку">
+          <button class="popup-edit__button-save" type="submit">Создать</button>
+        </form>
+      </section>
+    </div>
+    <div class="popup popup-preview">
+      <div class="popup-preview__container">
+        <img class="popup-preview__image" src="./images/1088404_opt.jpg" alt="#">
+        <button class="popup__close-button button" type="button" aria-label="Закрыть"></button>
+        <p class="popup-preview__caption">caption</p>
+      </div>
+    </div>
+    <template id="card-template">
+      <li class="card">
+        <img src="./images/1088404_opt.jpg" class="card__image" alt="#">
+        <button class="card__delete-button button" type="button" aria-label="Удалить"></button>
+        <div class="card__content">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button" aria-label="Лайк"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

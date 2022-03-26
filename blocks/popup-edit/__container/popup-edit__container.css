@@ -1,4 +1,4 @@
-.popup__container {
+.popup-edit__container {
   position: relative;
   background-color: white;
   color: black;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 468px) {
-  .popup__container  {
+  .popup-edit__container  {
     max-width: calc(100% - 38px);
     padding: 25px 22px;
   }
