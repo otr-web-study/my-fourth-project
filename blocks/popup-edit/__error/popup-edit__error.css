@@ -1,0 +1,8 @@
+.popup-edit__error {
+  font-size: 12px;
+  line-height: 14.5;
+  font-weight: 400;
+  color: red;
+  opacity: 0;
+  transition: .3s;
+}
