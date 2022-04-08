@@ -18,6 +18,10 @@ const previewCaption = popupPreviewElement.querySelector('.popup-preview__captio
 const profileCloseButton = popupProfileElement.querySelector('.popup__close-button');
 const placeCloseButton = popupPlaceElement.querySelector('.popup__close-button');
 const previewCloseButton = popupPreviewElement.querySelector('.popup__close-button');
+const profileSaveButton = popupProfileElement.querySelector('.popup-edit__button-save');
+const placeSaveButton = popupPlaceElement.querySelector('.popup-edit__button-save');
+const inactiveButtonClass = 'popup-edit__button-save_inactive';
+const inputEvent = new Event('input');
 
 const initialCards = [
   {
@@ -80,32 +84,38 @@ function onDocumentKeyUp(evt) {
 }
 
 function handleProfileFormSubmit(evt) {
-    evt.preventDefault(); 
+    evt.preventDefault();
+    if (!profileSaveButton.classList.contains(inactiveButtonClass)) {
 
-    profileAuthor.textContent = profileNameInput.value;
-    profileBio.textContent = profileBioInput.value;
-    
-    closePopup();
+      profileAuthor.textContent = profileNameInput.value;
+      profileBio.textContent = profileBioInput.value;
+      
+      closePopup();
+    }
 }
 
 function handlePlaceFormSubmit(evt){
   evt.preventDefault();
+  if (!placeSaveButton.classList.contains(inactiveButtonClass)) {
 
-  const cardDescription = {
-    'name': placeNameInput.value,
-    'link': placeOptionInput.value
-  };
+    const cardDescription = {
+      'name': placeNameInput.value,
+      'link': placeOptionInput.value
+    };
 
-  formPlaceElement.reset();
+    formPlaceElement.reset();
 
-  elementsList.prepend(createCardElement(cardDescription));
+    elementsList.prepend(createCardElement(cardDescription));
 
-  closePopup();
+    closePopup();
+  }
 }
 
 function openProfilePopup() {
   profileNameInput.value = profileAuthor.textContent;
+  profileNameInput.dispatchEvent(inputEvent);
   profileBioInput.value = profileBio.textContent;
+  profileBioInput.dispatchEvent(inputEvent);
 
   openPopup(popupProfileElement);
 }
@@ -114,15 +124,23 @@ function openPlacePopup() {
   openPopup(popupPlaceElement);
 }
 
+function handlePopupClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup();
+  }
+}
+
 function openPopup(element) {
   element.classList.add('popup_opened');
   document.addEventListener('keyup', onDocumentKeyUp);
+  element.addEventListener('click', handlePopupClick);
 }
 
 function closePopup() {
   const openedPopup = document.querySelector('.popup_opened');
   if (openedPopup) {
     openedPopup.classList.remove('popup_opened');
+    openedPopup.removeEventListener('click', handlePopupClick);
   }
   document.removeEventListener('keyup', onDocumentKeyUp);
 }
