@@ -18,12 +18,22 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
+const disableSubmitButton = (buttonElement, disableButtonClass) => {
+  buttonElement.classList.add(disableButtonClass);
+  buttonElement.disabled = true;
+};
+
+const enableSubmitButton = (buttonElement, disableButtonClass) => {
+  buttonElement.classList.remove(disableButtonClass);
+  buttonElement.disabled = false;
+};
+
 const toggleButtonState = (inputList, buttonElement, settingsObject) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(settingsObject.inactiveButtonClass);
+    disableSubmitButton(buttonElement, settingsObject.inactiveButtonClass);
   }
   else {
-    buttonElement.classList.remove(settingsObject.inactiveButtonClass);
+    enableSubmitButton(buttonElement, settingsObject.inactiveButtonClass);
   }
 };
 
@@ -69,3 +79,5 @@ enableValidation({
   inputErrorClass: 'popup-edit__input_type_error',
   errorClass: 'popup-edit__error_active'
 });
+
+export { disableSubmitButton };

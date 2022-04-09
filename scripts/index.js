@@ -1,3 +1,5 @@
+import { disableSubmitButton } from './validate.js';
+
 const popupProfileElement = document.querySelector('.popup-edit_type_profile');
 const popupPlaceElement = document.querySelector('.popup-edit_type_place');
 const popupPreviewElement = document.querySelector('.popup-preview')
@@ -18,7 +20,6 @@ const previewCaption = popupPreviewElement.querySelector('.popup-preview__captio
 const profileCloseButton = popupProfileElement.querySelector('.popup__close-button');
 const placeCloseButton = popupPlaceElement.querySelector('.popup__close-button');
 const previewCloseButton = popupPreviewElement.querySelector('.popup__close-button');
-const profileSaveButton = popupProfileElement.querySelector('.popup-edit__button-save');
 const placeSaveButton = popupPlaceElement.querySelector('.popup-edit__button-save');
 const inactiveButtonClass = 'popup-edit__button-save_inactive';
 const inputEvent = new Event('input');
@@ -85,30 +86,27 @@ function onDocumentKeyUp(evt) {
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    if (!profileSaveButton.classList.contains(inactiveButtonClass)) {
 
-      profileAuthor.textContent = profileNameInput.value;
-      profileBio.textContent = profileBioInput.value;
-      
-      closePopup();
-    }
+    profileAuthor.textContent = profileNameInput.value;
+    profileBio.textContent = profileBioInput.value;
+    
+    closePopup();
 }
 
 function handlePlaceFormSubmit(evt){
   evt.preventDefault();
-  if (!placeSaveButton.classList.contains(inactiveButtonClass)) {
+  
+  const cardDescription = {
+    'name': placeNameInput.value,
+    'link': placeOptionInput.value
+  };
 
-    const cardDescription = {
-      'name': placeNameInput.value,
-      'link': placeOptionInput.value
-    };
+  elementsList.prepend(createCardElement(cardDescription));
 
-    formPlaceElement.reset();
+  closePopup();
 
-    elementsList.prepend(createCardElement(cardDescription));
-
-    closePopup();
-  }
+  formPlaceElement.reset();
+  disableSubmitButton(placeSaveButton, inactiveButtonClass);
 }
 
 function openProfilePopup() {
