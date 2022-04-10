@@ -1,5 +1,3 @@
-import { disableSubmitButton } from './validate.js';
-
 const popupProfileElement = document.querySelector('.popup-edit_type_profile');
 const popupPlaceElement = document.querySelector('.popup-edit_type_place');
 const popupPreviewElement = document.querySelector('.popup-preview')

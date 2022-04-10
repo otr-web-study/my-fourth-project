@@ -79,5 +79,3 @@ enableValidation({
   inputErrorClass: 'popup-edit__input_type_error',
   errorClass: 'popup-edit__error_active'
 });
-
-export { disableSubmitButton };
