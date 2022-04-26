@@ -90,7 +90,7 @@ function handlePlaceFormSubmit(evt){
   closePopup();
 
   formPlaceElement.reset();
-  evt.target.formValidator._disableSubmitButton(placeSaveButton, inactiveButtonClass);
+  evt.target.formValidator.disableSubmitButton(placeSaveButton, inactiveButtonClass);
 }
 
 function openImagePopup(cardDescription) {
