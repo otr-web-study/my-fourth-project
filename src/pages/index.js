@@ -23,18 +23,22 @@ import {
 
 const userInfo = new UserInfo(profileAuthorSelector, profileBioSelector);
 
+function createCard(inputValues) {
+  const card = new Card(
+    {
+      data: inputValues,
+      cardSelector: cardTemplateSelector
+    }, () => {
+      imagePopup.open(inputValues)
+    });
+  return card.generateCard()
+}
+
 const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(
-        {
-          data: item,
-          cardSelector: cardTemplateSelector
-        }, () => {
-          imagePopup.open(item)
-        });
-      cardList.addItem(card.generateCard());
+      cardList.addItem(createCard(item));
     }
   },
   elementsListSelector
@@ -50,33 +54,17 @@ const placePopup = new PopupWithForm(popupPlaceSelector, handlePlaceFormSubmit);
 placePopup.setEventListeners();
 
 
-function handleProfileFormSubmit({ Name, Option }) {
-  userInfo.setUserInfo(Name, Option);
+function handleProfileFormSubmit(userDescription) {
+  userInfo.setUserInfo(userDescription);
 }
 
-function handlePlaceFormSubmit(inputValues){
-  
-  const cardDescription = {
-    'name': inputValues.Name,
-    'link': inputValues.Option
-  };
-
-  const card = new Card(
-    {
-      data: cardDescription,
-      cardSelector: cardTemplateSelector
-    }, imagePopup.open
-  );
-
-  cardList.addItem(card.generateCard(), true);
-  
-  if (this.elementForm.formValidator) {
-    this.elementForm.formValidator.disableSubmitButton();
-  };
+function handlePlaceFormSubmit(inputValues) {
+  cardList.addItem(createCard(inputValues), true);
+  this.elementForm.formValidator.disableSubmitButton();
 }
 
 function openProfilePopup() {
-  const { author, bio }= userInfo.getUserInfo();
+  const { author, bio } = userInfo.getUserInfo();
   const inputValues = [
     {
       'name': 'author',
@@ -91,6 +79,7 @@ function openProfilePopup() {
   ];
 
   profilePopup.setInputValues(inputValues);
+  profilePopup.elementForm.formValidator.toggleButtonState();
   profilePopup.open();
 }
 

@@ -9,8 +9,7 @@ export const elementsListSelector = '.elements__list';
 export const profileAuthorSelector = '.profile__author';
 export const profileBioSelector = '.profile__bio';
 export const inactiveButtonClass = 'popup-edit__button-save_inactive';
-export const inputEvent = new Event('input');
-export const cardTemplateSelector = '#card-template'
+export const cardTemplateSelector = '#card-template';
 
 export const ESC_KEY = 'Escape';
 

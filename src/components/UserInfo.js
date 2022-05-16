@@ -11,8 +11,8 @@ export default class UserInfo{
     };
   }
 
-  setUserInfo(name, bio) {
+  setUserInfo({ name, option }) {
     this._author.textContent = name;
-    this._bio.textContent = bio;
+    this._bio.textContent = option;
   }
 }

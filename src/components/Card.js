@@ -7,13 +7,11 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document
+    return document
     .querySelector(this._cardSelector)
     .content
     .querySelector('.card')
     .cloneNode(true);
-
-    return cardElement;
   }
 
   _handleLikeButtonClick() {
@@ -45,6 +43,7 @@ export default class Card {
     this._image = this._element.querySelector('.card__image');
     this._likeButton = this._element.querySelector('.card__like-button');
     this._deleteButton = this._element.querySelector('.card__delete-button');
+
     this._setEventListeners();
 
     this._element.querySelector('.card__title').textContent = this._name;

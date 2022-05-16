@@ -4,9 +4,10 @@ import {
 
 export default class Popup {
   constructor(popupSelector) {
+    this._popupSelector = popupSelector;
     this._elementPopup = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
-    this._closeButton = this._elementPopup.querySelector('.popup__close-button')
+    this._closeButton = this._elementPopup.querySelector('.popup__close-button');
   }
 
   _handleEscClose(evt) {
@@ -27,12 +28,10 @@ export default class Popup {
 
   setEventListeners() {
     this._elementPopup.addEventListener('click', (evt) => {
-      if (evt && evt.target === evt.currentTarget) {
+      if (evt && (evt.target === this._elementPopup
+          || evt.target.classList.contains('popup__close-button'))) {
         this.close();
       }
     });
-    this._closeButton.addEventListener('click', (evt) => {
-      this.close();
-    })
   }
 }
