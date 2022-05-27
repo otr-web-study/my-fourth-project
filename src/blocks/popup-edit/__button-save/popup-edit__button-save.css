@@ -11,12 +11,12 @@
   border: none;
 }
 
-.popup__button-save:hover {
+.popup-edit__button-save:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 468px) {
-  .popup__button-save  {
+  .popup-edit__button-save  {
     margin-top: 45px;
     font-size: 14px;
     line-height: 17px;
