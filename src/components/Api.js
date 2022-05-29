@@ -81,7 +81,7 @@ export default class Api {
     });
   }
 
-  getInitialData() {
-    return Promise.all([this.getInitialCards(), this.getUserData()]);
+  batchFetch(fetchMethods) {
+    return Promise.all(fetchMethods);
   }
 }
