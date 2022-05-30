@@ -5,6 +5,7 @@ export const popupConfirmSelector = '.popup-edit_type_confirm';
 export const popupAvatarSelector = '.popup-edit_type_avatar';
 export const popupInputAuthorSelector = '.popup-edit__input_type_name';
 export const popupInputBioSelector = '.popup-edit__input_type_option';
+export const popupInputAvatarSelector = '.popup-edit__input_type_option-avatar';
 export const profileEditButton = document.querySelector('.profile__edit-button');
 export const placeAddButton = document.querySelector('.profile__add-button');
 export const profileAvatarEditButton = document.querySelector('.profile__avatar-edit-button');

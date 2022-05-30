@@ -4,7 +4,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import PopupConfirm from "../components/PopupConfirm.js";
+import PopupConfirm from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import {
@@ -15,6 +15,7 @@ import {
   popupAvatarSelector,
   popupInputAuthorSelector,
   popupInputBioSelector,
+  popupInputAvatarSelector,
   profileEditButton,
   placeAddButton,
   profileAvatarEditButton,
@@ -84,19 +85,31 @@ confirmPopup.setEventListeners();
 function handleAvatarFormSubmit(avatarData) {
   avatarPopup.renderProcessing(true);
   api.updateUserAvatar({avatar: avatarData.link})
-    .then(res => {userInfo.setAvatar(res.avatar)})
-    .finally(avatarPopup.renderProcessing(false));
+    .then(res => {
+      userInfo.setAvatar(res.avatar);
+      avatarPopup.close();
+    })
+    .finally(() => {avatarPopup.renderProcessing(false)});
 }
 
 function handleConfirmFormSubmit({ card }) {
   confirmPopup.renderProcessing(true);
   api.deleteCard(card.getId())
-    .then(res => {card.onDeleteButtonClick()})
+    .then(res => {
+      card.onDeleteButtonClick();
+      confirmPopup.close();
+    })
     .finally(() => {confirmPopup.renderProcessing(false)});
 }
 
-function handleProfileFormSubmit(userDescription) {
-  userInfo.setUserInfo(userDescription);
+function handleProfileFormSubmit({ name, option: about }) {
+  profilePopup.renderProcessing(true);
+  api.updateUserData({name, about})
+    .then(res => {
+      userInfo.setUserInfo(res);
+      profilePopup.close();
+    })
+    .finally(() => {profilePopup.renderProcessing(false)});
 }
 
 function handlePlaceFormSubmit(inputValues) {
@@ -105,6 +118,7 @@ function handlePlaceFormSubmit(inputValues) {
     .then(res => {
       cardList.addItem(createCard(res), true);
       this.elementForm.formValidator.disableSubmitButton();
+      placePopup.close();
     })
     .finally(() => {placePopup.renderProcessing(false)})
 }
@@ -134,6 +148,12 @@ function openPlacePopup() {
 }
 
 function openAvatarPopup() {
+  avatarPopup.setInputValues([{
+    'name': 'link',
+    'inputSelector': popupInputAvatarSelector,
+    'value': userInfo.getAvatar()
+  }]);
+  avatarPopup.elementForm.formValidator.toggleButtonState();
   avatarPopup.open();
 }
 

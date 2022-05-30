@@ -32,8 +32,6 @@ export default class PopupWithForm extends PopupWithProcessing {
     this._elementPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-
-      this.close();
     });
   }
 

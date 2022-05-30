@@ -13,9 +13,9 @@ export default class UserInfo{
     };
   }
 
-  setUserInfo({ name, option }) {
+  setUserInfo({ name, about }) {
     this._author.textContent = name;
-    this._bio.textContent = option;
+    this._bio.textContent = about;
   }
 
   getUserId() {
@@ -28,5 +28,9 @@ export default class UserInfo{
 
   setAvatar(avatarSrc) {
     this._avatar.src = avatarSrc;
+  }
+
+  getAvatar() {
+    return this._avatar.src;
   }
 }
