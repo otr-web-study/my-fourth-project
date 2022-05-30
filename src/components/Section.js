@@ -12,15 +12,17 @@ export default class Section {
     this.clear();
 
     items.forEach(item => {
-      this._renderer(item);
+      this.addItem(item);
     });
   }
 
-  addItem(element, prepend=false) {
+  addItem(item, prepend=false) {
+    const card = this._renderer(item);
+
     if (prepend) {
-      this._container.prepend(element);
+      this._container.prepend(card);
     } else {
-      this._container.append(element);
+      this._container.append(card);
     }
   }
 }

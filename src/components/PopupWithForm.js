@@ -1,11 +1,12 @@
-import PopupWithProcessing from "./popupWithProcessing.js";
+import Popup from "./Popup.js";
 
-export default class PopupWithForm extends PopupWithProcessing {
+export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this.elementForm = this._elementPopup.querySelector('.popup-edit__form')
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = this.elementForm.querySelectorAll('.popup-edit__input');
+    this._submitButton = this._elementPopup.querySelector('.popup-edit__button-save');
   }
 
   _getInputValues() {
@@ -19,19 +20,24 @@ export default class PopupWithForm extends PopupWithProcessing {
   }
 
   setInputValues(values) {
-    values.forEach(item => {
-      if (!this[item.name]) {
-        this[item.name] = this._elementPopup.querySelector(item.inputSelector);
-      }
-      this[item.name].value = item.value;
-    });
+    this._inputList.forEach(input => {
+      input.value = values[input.name];
+    })
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._elementPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
+
+      const initialText = this._submitButton.textContent;
+      this._submitButton.textContent = 'Сохранение...'
+
+      this._handleFormSubmit(this._getInputValues())
+        .then(() => this.close())
+        .finally(() => {
+          this._submitButton.textContent = initialText
+        });
     });
   }
 

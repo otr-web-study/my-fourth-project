@@ -14,14 +14,9 @@ export default class Api {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  _handleError(err) {
-    console.log(err);
-  }
-
   _fetchData(url, options) {
     return fetch(url, options)
-      .then(this._handleResponse)
-      .catch(this._handleError);
+      .then(this._handleResponse);
   }
 
   getInitialCards() {

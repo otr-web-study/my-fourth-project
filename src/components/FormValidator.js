@@ -33,6 +33,13 @@ export default class FormValidator {
     this._submitButton.disabled = true;
   };
   
+  resetValidation() {
+    this._inputList.forEach(item => {
+      this._hideInputError(item)
+    });
+    this._enableSubmitButton();
+  }
+
   _enableSubmitButton() {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
@@ -43,7 +50,7 @@ export default class FormValidator {
       this.disableSubmitButton();
     }
     else {
-      this._enableSubmitButton();
+      this.resetValidation();
     }
   };
   
