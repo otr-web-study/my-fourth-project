@@ -156,3 +156,4 @@ api.batchFetch([api.getInitialCards(), api.getUserData()])
 
     cardList.renderItems(initialCards);
   })
+  .catch(err => {console.log(err)});
